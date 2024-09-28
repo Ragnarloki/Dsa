@@ -3,16 +3,21 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        RemoveDuplicate remove=new RemoveDuplicate();
-        remove.removeElement();
+//        RemoveDuplicate remove=new RemoveDuplicate();
+//        remove.removeElement();
         RotateArray rotate=new RotateArray();
-        MoveAllZerosToTheEndOfTheArray moveAllZerosToTheEndOfTheArray=new MoveAllZerosToTheEndOfTheArray();
-        RearrangeArray rearrangeArray=new RearrangeArray();
-        long[] arr = {1, 2, 3, 4, 5, 6};
-        rearrangeArray.rearrange(arr, arr.length);
-
-        // Print the rearranged array
-        System.out.println(Arrays.toString(arr));
+//        MoveAllZerosToTheEndOfTheArray moveAllZerosToTheEndOfTheArray=new MoveAllZerosToTheEndOfTheArray();
+//        RearrangeArray rearrangeArray=new RearrangeArray();
+//        long[] arr = {1, 2, 3, 4, 5};
+//        rearrangeArray.rearrange(arr, arr.length);
+//
+//        // Print the rearranged array
+//        System.out.println(Arrays.toString(arr));
+//
+//        ReverseSubGroup reverseSubGroup=new ReverseSubGroup();
+          Solve_Sweet_Problems sweet_problems = new Solve_Sweet_Problems();
+          int result= sweet_problems.Problems(16,2,10);
+          System.out.println(result);
     }
 
 }
@@ -112,4 +117,63 @@ class RearrangeArray{
 
     }
 
+}
+
+class ReverseSubGroup {
+
+    // Function to reverse every sub-array group of size k.
+
+    public ReverseSubGroup() {
+        int[] arr={1,2,3,4,5};
+        int temp=0;
+        int i=0;
+        if (arr.length %2 == 0) {
+        while(i<arr.length) {
+
+                temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                i = i + 2;
+
+            }
+
+
+
+        }
+        if (arr.length %2 != 0) {
+           while(i<arr.length-3){
+
+
+                   temp = arr[i];
+                   arr[i] = arr[i + 1];
+                   arr[i + 1] = temp;
+                       i = i + 2;
+              }
+           }
+        System.out.println(Arrays.toString(arr));
+
+    }
+}
+
+class Solve_Sweet_Problems {
+    public int Problems(int sweet,int e, int d){
+        int n= sweet;
+        int i=1;
+        int ans=1;
+       while(i<=d){
+            if(i%7==0 && n<e){
+                return -1;
+            }
+
+            if(n<e && i%7!=0){
+                n=n+sweet;
+                ans++;
+            }
+            if(n>=e){
+                n=n-e;
+                ans++;
+            }
+       }
+    return ans;
+    }
 }
