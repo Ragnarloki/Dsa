@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static java.lang.Integer.parseInt;
+
 public class Main {
     public static void main(String[] args) {
 //        RemoveDuplicate remove=new RemoveDuplicate();
@@ -18,6 +20,16 @@ public class Main {
           Solve_Sweet_Problems sweet_problems = new Solve_Sweet_Problems();
           int result= sweet_problems.Problems(16,2,10);
           System.out.println(result);
+          Union union=new Union();
+          Missing_Array missingArray=new Missing_Array();
+          int results=missingArray.missing_Array();
+          System.out.println(results);
+          EquilibriumPoint equilibriumPoint=new EquilibriumPoint();
+          int equilibrium=equilibriumPoint.equilibriumPoint();
+          System.out.println("equilibrium: "+equilibrium);
+          ConcecutiveOnes concecutiveOnes=new ConcecutiveOnes();
+          IntersectionOfTwoSortedArray intersectionOfTwoSortedArray=new IntersectionOfTwoSortedArray();
+
     }
 
 }
@@ -165,15 +177,171 @@ class Solve_Sweet_Problems {
                 return -1;
             }
 
-            if(n<e && i%7!=0){
+            if(n<e){
                 n=n+sweet;
                 ans++;
             }
             if(n>=e){
                 n=n-e;
-                ans++;
+                i++;
             }
        }
     return ans;
+    }
+}
+
+class Union {
+    public Union(){
+//        int [] arr1={1,2,3,4,5};
+//        int [] arr2={1,2,3,4,6};
+//        int len1= arr1.length;
+//        int len2= arr2.length;
+//        int i=0;
+//        int j=0;
+//        ArrayList<Integer> ans=new <Integer>ArrayList();
+//        while(i<len1 && j<len2){
+//            if(arr1[i]!=arr2[j]){
+//                ans.add(arr1[i]);
+//                ans.add(arr2[j]);
+//                i++;
+//                j++;
+//            }
+//            if(arr1[i]==arr2[j]){
+//                ans.add(arr1[i]);
+//                System.out.println(ans);
+//                if(i<len1-1){
+//                    i++;
+//                }
+//                if(i<len1-1){
+//                    j++;
+//
+//                }
+//            }
+//
+//        }
+        System.out.println("Union ans");
+    }
+}
+
+class Missing_Array{
+      public int missing_Array(){
+         int []arr={1,2,3,5};
+         int n=5;
+         int sum_of_arr=0;
+         int ans=n*(n+1)/2;
+         for(int i=0;i<n-1;i++){
+             sum_of_arr+=arr[i];
+         }
+         return ans-sum_of_arr;
+     }
+}
+
+class EquilibriumPoint {
+    // arr: input array
+    // Function to find equilibrium point in the array.
+    public int equilibriumPoint() {
+        // Your code here
+        int [] arr={1,2,5,2,1};
+        int left=0;
+        int right=0;
+        int n=arr.length;
+        int point=2;
+
+        for(int i=point;i<n-1;i++){
+            left+=arr[i+1];
+        }
+        for(int i=point;i>0;i--){
+            right+=arr[i-1];
+        }
+        if(left==right){
+            return point;
+        }
+
+        return -1;
+    }
+}
+
+class IndexOfSubarraySum{
+    public IndexOfSubarraySum(){
+        int [] arr={1,2,3,7,5};
+        int n=arr.length;
+        int s=12;
+        int start=0;
+        int end=0;
+        int count=0;
+        ArrayList<Integer> Ans=new ArrayList<Integer>();
+        for(int i=0;i<n-1;i++){
+            for(int j=1;j<n;j++){
+
+            }
+        }
+
+    }
+}
+
+class ConcecutiveOnes{
+    public ConcecutiveOnes(){
+        int [] arr={1,1,1,0,0,1,1,1,0,1,1,1,1};
+        int n=arr.length;
+        int cnt=0;
+        int nofones=0;
+
+        for(int i=0;i<n;i++){
+            if (arr[i] == 1) {
+                cnt++;
+            } else {
+                cnt = 0;
+            }
+
+            nofones= Math.max(nofones, cnt);
+        }
+        System.out.println("ConcecutiveOnes: "+nofones);
+    }
+}
+
+class IntersectionOfTwoSortedArray{
+    public IntersectionOfTwoSortedArray() {
+        int[] arr1 = {1, 2, 3, 3, 5, 6, 7, 9};
+        int[] arr2 = {1, 3, 3, 4 ,6, 7, 8 ,9, 10};
+        ArrayList<Integer> ans=new ArrayList<Integer>();
+        int i = 0;
+        int j = 0;
+        int n = arr1.length;
+        int m = arr2.length;
+        while(i<n && j<m){
+            if(arr1[i]<arr2[j]){
+                i++;
+            }
+            else if(arr2[j]<arr1[i]){
+                j++;
+            }
+            else if(arr1[i]==arr2[j]){
+                ans.add(arr1[i]);
+                i++;
+                j++;
+            }
+
+
+
+        }
+        System.out.println(ans);
+    }
+}
+
+class ValidIp {
+
+    public ValidIp() {
+        // Write your code here
+        String str="225.22.33.33";
+        String ans="";
+        int result;
+        for(int i=str.length();i>0;i--){
+
+                ans=str.charAt(i)+ans;
+
+            if(parseInt(ans)<=225 && Integer.parseInt(ans)>0){
+                System.out.println(ans);
+            }
+        }
     }
 }
